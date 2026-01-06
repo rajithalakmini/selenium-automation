@@ -1,0 +1,7 @@
+baseUrl: "https://prod.app-under-test.example.com"
+apiUrl: "https://prod.api-under-test.example.com"
+username: "prod-user"
+password: "prod-pass"
+apiToken: "prod-token"
+headless: true
+chromiumBinary: ""

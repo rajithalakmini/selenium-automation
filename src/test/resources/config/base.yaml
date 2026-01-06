@@ -1,0 +1,7 @@
+baseUrl: "https://app-under-test.example.com"
+apiUrl: "https://api-under-test.example.com"
+username: "user-base"
+password: "pass-base"
+apiToken: "token-base"
+headless: true
+chromiumBinary: ""   # optional: path to chromium if not default Chrome

@@ -1,0 +1,51 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        env: [qa]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup JDK
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 17
+          cache: maven
+
+      # Optional: install specific Chromium if needed
+      # - name: Install Chromium
+      #   run: sudo apt-get update && sudo apt-get install -y chromium-browser
+
+      - name: Run tests (API + UI smoke)
+        run: mvn -B clean test -Denv=${{ matrix.env }}
+        env:
+          ENV: ${{ matrix.env }}
+
+      - name: Publish Allure results
+        if: always()
+        uses: simple-elf/allure-report-action@v1.7
+        with:
+          allure_results: target/allure-results
+          allure_report: target/allure-report
+          keep_reports: 5
+
+      - name: Upload test reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-artifacts
+          path: |
+            target/surefire-reports
+            target/allure-results
+            target/allure-report

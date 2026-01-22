@@ -1,7 +1,0 @@
-baseUrl: "https://qa.app-under-test.example.com"
-apiUrl: "https://qa.api-under-test.example.com"
-username: "qa-user"
-password: "qa-pass"
-apiToken: "qa-token"
-headless: true
-chromiumBinary: ""

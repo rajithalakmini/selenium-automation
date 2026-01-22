@@ -1,7 +1,0 @@
-baseUrl: "https://demo.guru99.com/test/newtours/"
-apiUrl: "https://api-under-test.example.com"
-username: "Admin"
-password: "123456"
-apiToken: "token-base"
-headless: true
-chromiumBinary: ""   # optional: path to chromium if not default Chrome

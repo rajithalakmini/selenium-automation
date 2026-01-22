@@ -12,9 +12,12 @@ public class ConfigManager {
         return env;
     }
     private static Environment load() {
-        String targetEnv = Optional.ofNullable(System.getProperty("env"))
+       /* String targetEnv = Optional.ofNullable(System.getProperty("env"))
                 .orElse(System.getenv("ENV"))
-                .orElse("qa");
+                .orElse("qa");*/
+           String targetEnv = Optional.ofNullable(System.getProperty("env"))
+        .or(() -> Optional.ofNullable(System.getenv("ENV")))
+        .orElse("qa");     
         String path = String.format("/config/%s.yaml", targetEnv);
         try (InputStream is = ConfigManager.class.getResourceAsStream(path)) {
             if (is == null) throw new RuntimeException("Config not found: " + path);

@@ -1,0 +1,7 @@
+com\example\tests\api\UserApiTest.class
+com\example\tests\ui\LoginUITest.class
+com\example\tests\ui\flows\AuthFlow.class
+com\example\tests\BaseTest.class
+com\example\tests\TestGroups.class
+com\example\tests\api\UserApiTest$UserPayload.class
+com\example\tests\ui\pages\LoginPage.class
